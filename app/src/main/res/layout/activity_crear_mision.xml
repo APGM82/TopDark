@@ -4,11 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/dv2"
-    tools:context=".ActivityVader">
+    android:background="@drawable/misiones"
+    tools:context=".ActivityCrearMision">
 
     <Button
-        android:id="@+id/btnVolver"
+        android:id="@+id/btnCrearCombate"
+        android:layout_width="212dp"
+        android:layout_height="68dp"
+        android:backgroundTint="#000000"
+        android:text="Mision de Combate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.555"
+        app:strokeColor="#FFFFFF"
+        app:strokeWidth="5px" />
+
+    <Button
+        android:id="@+id/btnCrearVuelo"
+        android:layout_width="212dp"
+        android:layout_height="68dp"
+        android:backgroundTint="#000000"
+        android:text="Mision de vuelo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.273"
+        app:strokeColor="#FFFFFF"
+        app:strokeWidth="5px" />
+
+    <Button
+        android:id="@+id/btnCrearBombardeo"
+        android:layout_width="212dp"
+        android:layout_height="68dp"
+        android:backgroundTint="#000000"
+        android:text="Mision de bombardeo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.416"
+        app:strokeColor="#FFFFFF"
+        app:strokeWidth="5px" />
+
+    <Button
+        android:id="@+id/btnVolverCrearMision"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#E91E63"
@@ -17,81 +62,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.847" />
-
-    <Button
-        android:id="@+id/btnAltaNave"
-        android:layout_width="212dp"
-        android:layout_height="68dp"
-        android:backgroundTint="#000000"
-        android:text="Alta Nave"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.242"
-        app:strokeColor="#FFFFFF"
-        app:strokeWidth="5px" />
-
-    <Button
-        android:id="@+id/btnCrearMision"
-        android:layout_width="212dp"
-        android:layout_height="68dp"
-        android:backgroundTint="#000000"
-        android:text="Crear Misión"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.38"
-        app:strokeColor="#FFFFFF"
-        app:strokeWidth="5px" />
-
-    <Button
-        android:id="@+id/btnAltaPiloto"
-        android:layout_width="212dp"
-        android:layout_height="68dp"
-        android:backgroundTint="#000000"
-        android:text="Alta Piloto"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.098"
-        app:strokeColor="#FFFFFF"
-        app:strokeWidth="5px" />
-
-    <Button
-        android:id="@+id/btnAsignar"
-        android:layout_width="212dp"
-        android:layout_height="68dp"
-        android:backgroundTint="#000000"
-        android:text="Asignar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.52"
-        app:strokeColor="#FFFFFF"
-        app:strokeWidth="5px" />
-
-    <Button
-        android:id="@+id/btnRanking"
-        android:layout_width="212dp"
-        android:layout_height="68dp"
-        android:backgroundTint="#000000"
-        android:text="Ránking"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.657"
-        app:strokeColor="#FFFFFF"
-        app:strokeWidth="5px" />
-
+        app:layout_constraintVertical_bias="0.846" />
 </androidx.constraintlayout.widget.ConstraintLayout>
