@@ -12,6 +12,7 @@ class AdminSQLIteConexion(context: Context, name: String, factory: SQLiteDatabas
         db.execSQL("create table misionesvuelo( id int primary key, duracion int)")
         db.execSQL("create table misionesbombardeo(id int primary key, carga boolean, pasajeros boolean)")
         db.execSQL("create table misionescombate(id int primary key, cazas int)")
+        db.execSQL("insert into pilotos values('Vader',45,0,'ladooscuro',null)")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
