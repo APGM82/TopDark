@@ -30,5 +30,10 @@ class MainActivity : AppCompatActivity() {
         resultLauncher.launch(intent)
         }
 
+        binding.buttonprueba.setOnClickListener{
+            val intent = Intent(this, ActivityHomePiloto::class.java)
+            resultLauncher.launch(intent)
+        }
+
     }
 }
