@@ -3,10 +3,12 @@ package com.example.topdark
 import Auxiliar.Conexion
 import Modelo.MisionBombardeo
 import Modelo.MisionCombate
+import Modelo.MisionVuelo
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.example.topdark.databinding.ActivityBombardeoBinding
 import com.example.topdark.databinding.ActivityCombateBinding
@@ -18,14 +20,6 @@ class ActivityCombate : AppCompatActivity() {
         binding = ActivityCombateBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var sumamisiones:Int=0
-
-        var v= Conexion.obtenerMisionesVuelo(this)
-        var c= Conexion.obtenerMisionesCombate(this)
-        var b= Conexion.obtenerMisionesBombardeo(this)
-        sumamisiones=v.size+c.size+b.size
-
-        var mision: MisionCombate =  MisionCombate(sumamisiones,binding.txtCazas.text.toString().toInt(),"","",false)
 
 
         binding.btnVolverMisionCombate.setOnClickListener {
@@ -34,8 +28,17 @@ class ActivityCombate : AppCompatActivity() {
             finish()
         }
         binding.btnMisionOkCombate.setOnClickListener {
+            var sumamisiones=0
+            var v= Conexion.obtenerMisionesVuelo(this)
+            for (i in v){sumamisiones++}
+            var c= Conexion.obtenerMisionesCombate(this)
+            for (i in c){sumamisiones++}
+            var b= Conexion.obtenerMisionesBombardeo(this)
+            for(i in b){sumamisiones++}
+            Toast.makeText(this,sumamisiones.toString(),Toast.LENGTH_SHORT).show()
+            var mision: MisionCombate = MisionCombate(sumamisiones,binding.txtCazas.text.toString().toInt(),"","",false)
             Conexion.addMisionCombate(this, mision)
-            Toast.makeText(this,"Se ha creado la misión", Toast.LENGTH_SHORT).show()
+
         }
     }
 }

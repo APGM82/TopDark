@@ -7,6 +7,7 @@ import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.example.topdark.databinding.ActivityBombardeoBinding
 import com.example.topdark.databinding.ActivityVueloBinding
@@ -18,14 +19,6 @@ class ActivityBombardeo : AppCompatActivity() {
         binding = ActivityBombardeoBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        var sumamisiones:Int=0
-
-        var v= Conexion.obtenerMisionesVuelo(this)
-        var c= Conexion.obtenerMisionesCombate(this)
-        var b= Conexion.obtenerMisionesBombardeo(this)
-        sumamisiones=v.size+c.size+b.size
-
-        var mision: MisionBombardeo =  MisionBombardeo(sumamisiones,binding.txtObjetivos.text.toString().toInt(),"","",false)
 
 
         binding.btnVolverMisionBombardeo.setOnClickListener {
@@ -34,8 +27,17 @@ class ActivityBombardeo : AppCompatActivity() {
             finish()
         }
         binding.btnMisionOkBombardeo.setOnClickListener {
+            var sumamisiones=0
+            var v= Conexion.obtenerMisionesVuelo(this)
+            for (i in v){sumamisiones++}
+            var c= Conexion.obtenerMisionesCombate(this)
+            for (i in c){sumamisiones++}
+            var b= Conexion.obtenerMisionesBombardeo(this)
+            for(i in b){sumamisiones++}
+            Toast.makeText(this,sumamisiones.toString(),Toast.LENGTH_SHORT).show()
+            var mision:MisionBombardeo=MisionBombardeo(sumamisiones,binding.txtObjetivos.text.toString().toInt(),"","",false)
             Conexion.addMisionBombardeo(this, mision)
-            Toast.makeText(this,"Se ha creado la misión", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this,"Se ha creado la misión", Toast.LENGTH_SHORT).show()
         }
     }
 }

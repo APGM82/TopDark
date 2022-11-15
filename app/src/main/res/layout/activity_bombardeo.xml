@@ -87,11 +87,12 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
+            android:hint="Objetivos..."
             android:inputType="textPersonName"
             android:minHeight="48dp"
-            android:text="Objetivos ..."
             android:textAlignment="center"
             android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF"
             android:textStyle="bold" />
 
     </LinearLayout>

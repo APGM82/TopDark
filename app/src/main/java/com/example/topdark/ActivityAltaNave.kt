@@ -22,6 +22,8 @@ class ActivityAltaNave : AppCompatActivity() {
         var tipo:String=""
 
         binding.rbCaza.setOnClickListener {
+            binding.chkPasajeros.isChecked=false
+            binding.chkCarga.isChecked=false
             binding.chkPasajeros.isEnabled=false
             binding.chkCarga.isEnabled=false
 
@@ -56,8 +58,17 @@ class ActivityAltaNave : AppCompatActivity() {
             finish()
         }
         binding.btnOkAltaNave.setOnClickListener{
+            var pasa:Boolean=false
+            var carg:Boolean=false
 
-            var n:Naves=Naves(binding.txtMatricula.text.toString(),tipo,binding.chkCarga.toString().toBoolean(),binding.chkPasajeros.toString().toBoolean(),tipo)
+            if(binding.chkPasajeros.isChecked==false){
+                pasa=false
+            }else{pasa=true}
+
+            if(binding.chkCarga.isChecked==false){
+                carg=false
+            }else{carg=true}
+            var n:Naves=Naves(binding.txtMatricula.text.toString(),tipo,carg,pasa,tipo)
             addNave(this,n)
             Toast.makeText(this,"Nave creada",Toast.LENGTH_SHORT).show()
         }

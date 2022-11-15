@@ -25,7 +25,7 @@ class ActivitySimulacion : AppCompatActivity() {
         var pil:String=mision.asignacionP
         var p:Pilotos?=buscarPiloto(this,pil)
         var exp:Int= p!!.experiencia
-        var objetivos=mision.objetivos
+        var objetivos=mision.cazas
         var objetivos2:Int=0
         var tiempo=objetivos*5*1000
         while(tiempo>0){

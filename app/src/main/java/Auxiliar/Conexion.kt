@@ -204,14 +204,14 @@ object Conexion {
         val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
         val bd = admin.writableDatabase
         val registro = ContentValues()
-        //id:Int, var duracion:Int,  asignacionP:String, asignacionN:String, completada:Boolean
+
         registro.put("id",m.id)
-        registro.put("cazas", m.objetivos)
+        registro.put("objetivos", m.objetivos)
         registro.put("asignacionp",m.asignacionP)
         registro.put("asignacionn", m.asignacionN)
         registro.put("completada", m.completada)
 
-        bd.insert("misionescombate", null, registro)
+        bd.insert("misionesbombardeo", null, registro)
         bd.close()
     }
     //TODAS LAS MISIONES DE VUELO
@@ -220,7 +220,7 @@ object Conexion {
 
         val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
         val bd = admin.writableDatabase
-        val fila = bd.rawQuery("select matricula,tipo,carga,pasajeros,foto from naves", null)
+        val fila = bd.rawQuery("select id,duracion,asignacionp, asignacionn,completada from misionesvuelo", null)
         while (fila.moveToNext()) {
             var m: MisionVuelo = MisionVuelo(fila.getInt(0),fila.getInt(1),fila.getString(2),fila.getString(3),fila.getString(4).toBoolean())
             misionesVuelo.add(m)
@@ -234,7 +234,7 @@ object Conexion {
 
         val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
         val bd = admin.writableDatabase
-        val fila = bd.rawQuery("select matricula,tipo,carga,pasajeros,foto from naves", null)
+        val fila = bd.rawQuery("select id,cazas,asignacionp, asignacionn,completada from misionescombate", null)
         while (fila.moveToNext()) {
             var m: MisionCombate = MisionCombate(fila.getInt(0),fila.getInt(1),fila.getString(2),fila.getString(3),fila.getString(4).toBoolean())
             misionesCombate.add(m)
@@ -248,7 +248,7 @@ object Conexion {
 
         val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
         val bd = admin.writableDatabase
-        val fila = bd.rawQuery("select matricula,tipo,carga,pasajeros,foto from naves", null)
+        val fila = bd.rawQuery("select id, objetivos, asignacionp, asignacionn, completada from misionesbombardeo", null)
         while (fila.moveToNext()) {
             var m: MisionBombardeo = MisionBombardeo(fila.getInt(0),fila.getInt(1),fila.getString(2),fila.getString(3),fila.getString(4).toBoolean())
             misionesBombardeo.add(m)
