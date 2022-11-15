@@ -1,8 +1,7 @@
 package Auxiliar
 
 import Conexion.AdminSQLIteConexion
-import Modelo.Naves
-import Modelo.Pilotos
+import Modelo.*
 import android.content.ContentValues
 import android.util.Log
 import android.widget.Toast
@@ -30,16 +29,6 @@ object Conexion {
         bd.close()
     }
 
-    //AQUI CAMBIO LA FOTO DEL PILOTO
-    fun modFotoPiloto(contexto:AppCompatActivity, nombre:String, p: Pilotos):Int {
-        val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
-        val bd = admin.writableDatabase
-        val registro = ContentValues()
-        registro.put("foto", p.foto)
-        val cant = bd.update("pilotos", registro, "nombre='${nombre}'", null)
-        bd.close()
-        return cant
-    }
     //AQUI CAMBIO LA EXPERIENCIA DEL PILOTO
     fun modExpPiloto(contexto:AppCompatActivity, nombre:String, p: Pilotos):Int {
         val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
@@ -180,6 +169,92 @@ object Conexion {
         return naves
     }
 
+    //AQUI AÑADO 1 MISION de vuelo
+    fun addMisionVuelo(contexto: AppCompatActivity, m: MisionVuelo){
+        val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
+        val bd = admin.writableDatabase
+        val registro = ContentValues()
+        //id:Int, var duracion:Int,  asignacionP:String, asignacionN:String, completada:Boolean
+        registro.put("id",m.id)
+        registro.put("duracion", m.duracion)
+        registro.put("asignacionp",m.asignacionP)
+        registro.put("asignacionn", m.asignacionN)
+        registro.put("completada", m.completada)
 
+        bd.insert("misionesvuelo", null, registro)
+        bd.close()
+    }
+    //AQUI AÑADO 1 MISION de Combate
+    fun addMisionCombate(contexto: AppCompatActivity, m: MisionCombate){
+        val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
+        val bd = admin.writableDatabase
+        val registro = ContentValues()
+        //id:Int, var duracion:Int,  asignacionP:String, asignacionN:String, completada:Boolean
+        registro.put("id",m.id)
+        registro.put("cazas", m.cazas)
+        registro.put("asignacionp",m.asignacionP)
+        registro.put("asignacionn", m.asignacionN)
+        registro.put("completada", m.completada)
+
+        bd.insert("misionescombate", null, registro)
+        bd.close()
+    }
+    //AQUI AÑADO 1 MISION de Bombardeo
+    fun addMisionBombardeo(contexto: AppCompatActivity, m: MisionBombardeo){
+        val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
+        val bd = admin.writableDatabase
+        val registro = ContentValues()
+        //id:Int, var duracion:Int,  asignacionP:String, asignacionN:String, completada:Boolean
+        registro.put("id",m.id)
+        registro.put("cazas", m.objetivos)
+        registro.put("asignacionp",m.asignacionP)
+        registro.put("asignacionn", m.asignacionN)
+        registro.put("completada", m.completada)
+
+        bd.insert("misionescombate", null, registro)
+        bd.close()
+    }
+    //TODAS LAS MISIONES DE VUELO
+    fun obtenerMisionesVuelo(contexto: AppCompatActivity):ArrayList<MisionVuelo>{
+        var misionesVuelo:ArrayList<MisionVuelo> = ArrayList(1)
+
+        val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
+        val bd = admin.writableDatabase
+        val fila = bd.rawQuery("select matricula,tipo,carga,pasajeros,foto from naves", null)
+        while (fila.moveToNext()) {
+            var m: MisionVuelo = MisionVuelo(fila.getInt(0),fila.getInt(1),fila.getString(2),fila.getString(3),fila.getString(4).toBoolean())
+            misionesVuelo.add(m)
+        }
+        bd.close()
+        return misionesVuelo
+    }
+    //TODAS LAS MISIONES DE COMBATE
+    fun obtenerMisionesCombate(contexto: AppCompatActivity):ArrayList<MisionCombate>{
+        var misionesCombate:ArrayList<MisionCombate> = ArrayList(1)
+
+        val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
+        val bd = admin.writableDatabase
+        val fila = bd.rawQuery("select matricula,tipo,carga,pasajeros,foto from naves", null)
+        while (fila.moveToNext()) {
+            var m: MisionCombate = MisionCombate(fila.getInt(0),fila.getInt(1),fila.getString(2),fila.getString(3),fila.getString(4).toBoolean())
+            misionesCombate.add(m)
+        }
+        bd.close()
+        return misionesCombate
+    }
+    //TODAS LAS MISIONES DE BOMBARDEO
+    fun obtenerMisionesBombardeo(contexto: AppCompatActivity):ArrayList<MisionBombardeo>{
+        var misionesBombardeo:ArrayList<MisionBombardeo> = ArrayList(1)
+
+        val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
+        val bd = admin.writableDatabase
+        val fila = bd.rawQuery("select matricula,tipo,carga,pasajeros,foto from naves", null)
+        while (fila.moveToNext()) {
+            var m: MisionBombardeo = MisionBombardeo(fila.getInt(0),fila.getInt(1),fila.getString(2),fila.getString(3),fila.getString(4).toBoolean())
+            misionesBombardeo.add(m)
+        }
+        bd.close()
+        return misionesBombardeo
+    }
 
 }

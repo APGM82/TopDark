@@ -1,9 +1,12 @@
 package com.example.topdark
 
+import Auxiliar.Conexion.addNave
+import Modelo.Naves
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.example.topdark.databinding.ActivityAltaNaveBinding
@@ -16,7 +19,7 @@ class ActivityAltaNave : AppCompatActivity() {
         binding = ActivityAltaNaveBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //(TO DO) listener de los radio button para desmarcar y deshabilitar pasajeros y carga
+        var tipo:String=""
 
         binding.rbCaza.setOnClickListener {
             binding.chkPasajeros.isEnabled=false
@@ -24,6 +27,7 @@ class ActivityAltaNave : AppCompatActivity() {
 
             binding.chkLayout.isVisible=false
             binding.imgNave.setImageResource(R.drawable.lambdashuttle)
+            tipo="caza"
         }
         binding.rbBombardero.setOnClickListener {
 
@@ -31,6 +35,7 @@ class ActivityAltaNave : AppCompatActivity() {
             binding.chkPasajeros.isEnabled=true
             binding.chkCarga.isEnabled=true
             binding.imgNave.setImageResource(R.drawable.tiebomber)
+            tipo="bombardero"
         }
         binding.rbCarga.setOnClickListener {
 
@@ -38,11 +43,10 @@ class ActivityAltaNave : AppCompatActivity() {
             binding.chkPasajeros.isEnabled=true
             binding.chkCarga.isEnabled=true
             binding.imgNave.setImageResource(R.drawable.tiefighter)
+            tipo="carguero"
         }
 
 
-
-        //(TO DO) meter la imagen personalizada al hacer clic con el boton
 
 
 
@@ -52,7 +56,10 @@ class ActivityAltaNave : AppCompatActivity() {
             finish()
         }
         binding.btnOkAltaNave.setOnClickListener{
-            //(TO DO) guardar el resultado del ok en la base de datos
+
+            var n:Naves=Naves(binding.txtMatricula.text.toString(),tipo,binding.chkCarga.toString().toBoolean(),binding.chkPasajeros.toString().toBoolean(),tipo)
+            addNave(this,n)
+            Toast.makeText(this,"Nave creada",Toast.LENGTH_SHORT).show()
         }
 
     }

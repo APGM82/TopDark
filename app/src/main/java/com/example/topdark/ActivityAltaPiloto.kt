@@ -1,6 +1,7 @@
 package com.example.topdark
 
 import Auxiliar.Conexion
+import Auxiliar.Conexion.addPiloto
 import Modelo.Pilotos
 import android.app.Activity
 import android.content.Intent
@@ -23,7 +24,7 @@ class ActivityAltaPiloto : AppCompatActivity() {
         }
         binding.btnOkAltaPiloto.setOnClickListener{
         var pil : Pilotos =Pilotos(binding.txtNombreAlta.text.toString(),(binding.txtEdadAlta.text.toString()).toInt(),0,"password",null)
-        Conexion.addPiloto(this,pil)
+        addPiloto(this,pil)
             binding.txtNombreAlta.setText("")
             binding.txtEdadAlta.setText("")
             Toast.makeText(this,"Piloto añadido",Toast.LENGTH_SHORT).show()

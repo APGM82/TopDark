@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.view.isVisible
 import com.example.topdark.databinding.ActivityCambioPasswordBinding
 
 class ActivityCambioPassword : AppCompatActivity() {
@@ -29,13 +30,14 @@ class ActivityCambioPassword : AppCompatActivity() {
 
         var nom:String=intent.getStringExtra("nombrePiloto")!!
         var p:Pilotos?=buscarPiloto(this,nom)
-
+        binding.btnContinuar.isVisible=false
         binding.txvNombrePasswd.text=nom
 
         binding.btnCambiarPassword.setOnClickListener{
             p!!.password=binding.txtNewPassword.text.toString()
             modPasswd(this,nom,p!!)
             Toast.makeText(this, "Contraseña cambiada correctamente", Toast.LENGTH_SHORT).show()
+            binding.btnContinuar.isVisible=true
         }
         binding.btnContinuar.setOnClickListener {
             val intent = Intent(this, ActivityHomePiloto::class.java)
