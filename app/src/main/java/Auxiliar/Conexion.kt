@@ -50,17 +50,39 @@ object Conexion {
         bd.close()
         return cant
     }
+
+    //AQUI CAMBIO LA CONTRASEÑA DEL PILOTO
+    fun modPasswd(contexto:AppCompatActivity, nombre:String, p: Pilotos):Int {
+        val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
+        val bd = admin.writableDatabase
+        val registro = ContentValues()
+        registro.put("password", p.password)
+        val cant = bd.update("pilotos", registro, "nombre='${nombre}'", null)
+        bd.close()
+        return cant
+    }
+    //AQUI CAMBIO LA FOTO DEL PILOTO
+    fun modFoto(contexto:AppCompatActivity, nombre:String, p: Pilotos):Int {
+        val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
+        val bd = admin.writableDatabase
+        val registro = ContentValues()
+        registro.put("foto", p.foto)
+        val cant = bd.update("pilotos", registro, "nombre='${nombre}'", null)
+        bd.close()
+        return cant
+    }
+
     //AQUI DEVUELVO 1 PILOTO EN SU BÚSQUEDA POR NOMBRE
     fun buscarPiloto(contexto: AppCompatActivity, nombre:String): Pilotos? {
         var p: Pilotos? = null
         val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
         val bd = admin.writableDatabase
         val fila = bd.rawQuery(
-            "select nombre,edad from pilotos where nombre='${nombre}'",
+            "select * from pilotos where nombre='${nombre}'",
             null
         )
         if (fila.moveToFirst()) {
-            p = Pilotos(nombre, fila.getInt(0), fila.getInt(1),fila.getString(2),fila.getString(3))
+            p = Pilotos(fila.getString(0), fila.getInt(1), fila.getInt(2),fila.getString(3),fila.getString(4))
         }
         bd.close()
         return p

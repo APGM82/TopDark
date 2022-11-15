@@ -6,10 +6,9 @@ import Modelo.MisionCombate
 import Modelo.Pilotos
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.topdark.databinding.ActivityCrearMisionBinding
+
 import com.example.topdark.databinding.ActivitySimulacionBinding
 import kotlin.random.Random
-import kotlin.random.nextInt
 
 
 class ActivitySimulacion : AppCompatActivity() {
@@ -56,6 +55,7 @@ class ActivitySimulacion : AppCompatActivity() {
             }
             tiempo--
         }
+        binding.txvExpGanada.setText((objetivos2*10).toString())
         exp=exp+(objetivos2*10)
         p.experiencia=exp
         modExpPiloto(this, p.nombre, p)

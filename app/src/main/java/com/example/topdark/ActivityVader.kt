@@ -15,8 +15,6 @@ class ActivityVader : AppCompatActivity() {
             // There are no request codes
             val data: Intent? = result.data
             // Get data from Intent
-
-
         } else { }
     }
 
