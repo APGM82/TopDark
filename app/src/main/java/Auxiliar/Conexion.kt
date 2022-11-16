@@ -256,5 +256,67 @@ object Conexion {
         bd.close()
         return misionesBombardeo
     }
+    //AQUI CAMBIO LA ASIGNACION PILOTO DE LAS MISIONES DE VUELO
+    fun modAsignacionesVueloPiloto(contexto:AppCompatActivity, id:Int, m: MisionVuelo):Int {
+        val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
+        val bd = admin.writableDatabase
+        val registro = ContentValues()
+        registro.put("asignacionp", m.asignacionP)
+        val cant = bd.update("misionesvuelo", registro, "id='${id}'", null)
+        bd.close()
+        return cant
+    }
+    //AQUI CAMBIO LA ASIGNACION NAVE DE LAS MISIONES DE VUELO
+    fun modAsignacionesVueloNave(contexto:AppCompatActivity, id:Int, m: MisionVuelo):Int {
+        val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
+        val bd = admin.writableDatabase
+        val registro = ContentValues()
+        registro.put("asignacionn",m.asignacionN)
+        val cant = bd.update("misionesvuelo", registro, "id='${id}'", null)
+        bd.close()
+        return cant
+    }
+    //AQUI CAMBIO LA ASIGNACION PILOTO DE LAS MISIONES DE BOMBARDEO
+    fun modAsignacionesBombardeoPiloto(contexto:AppCompatActivity, id:Int, m: MisionBombardeo):Int {
+        val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
+        val bd = admin.writableDatabase
+        val registro = ContentValues()
+        registro.put("asignacionp", m.asignacionP)
+        val cant = bd.update("misionesbombardeo", registro, "id='${id}'", null)
+        bd.close()
+        return cant
+    }
+    //AQUI CAMBIO LA ASIGNACION NAVE DE LAS MISIONES DE BOMBARDEO
+    fun modAsignacionesBombardeoNave(contexto:AppCompatActivity, id:Int, m: MisionBombardeo):Int {
+        val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
+        val bd = admin.writableDatabase
+        val registro = ContentValues()
+        registro.put("asignacionn",m.asignacionN)
+        val cant = bd.update("misionesbombardeo", registro, "id='${id}'", null)
+        bd.close()
+        return cant
+    }
+    //AQUI CAMBIO LA ASIGNACION PILOTO DE LAS MISIONES DE COMBATE
+    fun modAsignacionesCombatePiloto(contexto:AppCompatActivity, id:Int, m: MisionCombate):Int {
+        val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
+        val bd = admin.writableDatabase
+        val registro = ContentValues()
+        registro.put("asignacionp", m.asignacionP)
+        val cant = bd.update("misionescombate", registro, "id='${id}'", null)
+        bd.close()
+        return cant
+    }
+
+
+    //AQUI CAMBIO LA ASIGNACION NAVE DE LAS MISIONES DE COMBATE
+    fun modAsignacionesCombateNave(contexto:AppCompatActivity, id:Int, m: MisionCombate):Int {
+        val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
+        val bd = admin.writableDatabase
+        val registro = ContentValues()
+        registro.put("asignacionn",m.asignacionN)
+        val cant = bd.update("misionescombate", registro, "id='${id}'", null)
+        bd.close()
+        return cant
+    }
 
 }

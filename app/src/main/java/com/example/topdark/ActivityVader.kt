@@ -44,5 +44,9 @@ class ActivityVader : AppCompatActivity() {
             val intent = Intent(this, ActivityRanking::class.java)
             resultLauncher.launch(intent)
         }
+        binding.btnAsignar.setOnClickListener {
+            val intent = Intent(this, ActivityAsignar::class.java)
+            resultLauncher.launch(intent)
+        }
     }
 }
