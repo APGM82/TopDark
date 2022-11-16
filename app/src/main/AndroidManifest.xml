@@ -13,6 +13,27 @@
         android:theme="@style/Theme.TopDark"
         tools:targetApi="31">
         <activity
+            android:name=".ActivityDetalles"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ActivityListaMisionesCompletas"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".ActivityListaMisionesPendientes"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".ActivityAsignar"
             android:exported="false">
             <meta-data

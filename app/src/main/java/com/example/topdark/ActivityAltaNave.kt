@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.isDigitsOnly
 import androidx.core.view.isVisible
 import com.example.topdark.databinding.ActivityAltaNaveBinding
 
@@ -20,6 +21,7 @@ class ActivityAltaNave : AppCompatActivity() {
         setContentView(binding.root)
 
         var tipo:String=""
+
 
         binding.rbCaza.setOnClickListener {
             binding.chkPasajeros.isChecked=false
@@ -68,9 +70,14 @@ class ActivityAltaNave : AppCompatActivity() {
             if(binding.chkCarga.isChecked==false){
                 carg=false
             }else{carg=true}
-            var n:Naves=Naves(binding.txtMatricula.text.toString(),tipo,carg,pasa,tipo)
-            addNave(this,n)
-            Toast.makeText(this,"Nave creada",Toast.LENGTH_SHORT).show()
+            if (!binding.txtMatricula.text.trim().toString().isNullOrEmpty() && (binding.rbCaza.isChecked || binding.rbBombardero.isChecked || binding.rbCarga.isChecked)){
+                var n:Naves=Naves(binding.txtMatricula.text.trim().toString(),tipo,carg,pasa,tipo)
+                addNave(this,n)
+                Toast.makeText(this,getResources().getString(R.string.creada),Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this,getResources().getString(R.string.errorMatricula),Toast.LENGTH_SHORT).show()
+            }
+
         }
 
     }

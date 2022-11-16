@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
+import androidx.core.text.isDigitsOnly
 import com.example.topdark.databinding.ActivityBombardeoBinding
 import com.example.topdark.databinding.ActivityCombateBinding
 
@@ -36,9 +37,12 @@ class ActivityCombate : AppCompatActivity() {
             var b= Conexion.obtenerMisionesBombardeo(this)
             for(i in b){sumamisiones++}
             Toast.makeText(this,sumamisiones.toString(),Toast.LENGTH_SHORT).show()
-            var mision: MisionCombate = MisionCombate(sumamisiones,binding.txtCazas.text.toString().toInt(),"","",false)
-            Conexion.addMisionCombate(this, mision)
-
+            if (!binding.txtCazas.text.trim().toString().isNullOrEmpty()){
+                if (binding.txtCazas.text.trim().toString().isDigitsOnly()){
+                    var mision: MisionCombate = MisionCombate(sumamisiones,binding.txtCazas.text.toString().toInt(),"","",false)
+                    Conexion.addMisionCombate(this, mision)
+                }
+            }
         }
     }
 }

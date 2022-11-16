@@ -1,12 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Top Dark</string>
     <string name="btnBack">Back</string>
-    <string name="btnOk" translatable="false">Ok</string>
     <string name="seleccionNave">Ship selection</string>
     <string name="pistaMatricula">Registration...</string>
     <string name="pasajeros">Passengers</string>
     <string name="carga">Load</string>
-    <string name="imgPersonalizada">Custom image...</string>
+    <string name="imgPersonalizada">Custom image..</string>
     <string name="creada">Ship created</string>
     <string name="errorMatricula">Error, fill the registration</string>
     <string name="pistaNombre">Name...</string>

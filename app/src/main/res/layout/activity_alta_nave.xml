@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#E91E63"
-        android:text="Volver"
+        android:text="@string/btnBack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.271"
@@ -51,7 +51,7 @@
             android:id="@+id/chkPasajeros"
             android:layout_width="wrap_content"
             android:layout_height="58dp"
-            android:text="Pasajeros"
+            android:text="@string/pasajeros"
             android:textColor="#C5C5C5"
             android:textSize="20sp" />
 
@@ -59,7 +59,7 @@
             android:id="@+id/chkCarga"
             android:layout_width="124dp"
             android:layout_height="58dp"
-            android:text="Carga"
+            android:text="@string/carga"
             android:textColor="#C5C5C5"
             android:textSize="20sp" />
     </LinearLayout>
@@ -68,7 +68,7 @@
         android:id="@+id/labNaves"
         android:layout_width="300dp"
         android:layout_height="65dp"
-        android:text="Selección de nave"
+        android:text="@string/seleccionNave"
         android:textAlignment="center"
         android:textColor="#ACABAB"
         android:textSize="34sp"
@@ -85,7 +85,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Matrícula (nombre)"
+        android:hint="@string/pistaMatricula"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textColor="#C6C6C6"
@@ -158,7 +158,7 @@
         android:id="@+id/btnCambiarImagenNave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Imagen Personalizada..."
+        android:text="@string/imgPersonalizada"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"

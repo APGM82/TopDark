@@ -67,6 +67,16 @@ class ActivityHomePiloto : AppCompatActivity() {
             intent.putExtra("nombrePiloto",p!!.nombre)
             resultLauncher.launch(intent)
         }
+        binding.btnListadoMisiones.setOnClickListener {
+            val intent = Intent(this, ActivityListaMisionesPendientes::class.java)
+            intent.putExtra("nombrePiloto",p!!.nombre)
+            resultLauncher.launch(intent)
+        }
+        binding.btnMisionesRealizadas.setOnClickListener {
+            val intent = Intent(this, ActivityListaMisionesCompletas::class.java)
+            intent.putExtra("nombrePiloto",p!!.nombre)
+            resultLauncher.launch(intent)
+        }
 
 
     }
