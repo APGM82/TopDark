@@ -15,8 +15,6 @@ class ActivityVader : AppCompatActivity() {
             // There are no request codes
             val data: Intent? = result.data
             // Get data from Intent
-
-
         } else { }
     }
 
@@ -44,6 +42,10 @@ class ActivityVader : AppCompatActivity() {
         }
         binding.btnRanking.setOnClickListener{
             val intent = Intent(this, ActivityRanking::class.java)
+            resultLauncher.launch(intent)
+        }
+        binding.btnAsignar.setOnClickListener {
+            val intent = Intent(this, ActivityAsignar::class.java)
             resultLauncher.launch(intent)
         }
     }

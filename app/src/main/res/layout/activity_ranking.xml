@@ -11,19 +11,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#E91E63"
-        android:text="Volver"
+        android:text="@string/btnBack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.919" />
+        app:layout_constraintVertical_bias="0.953" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="417dp"
-        android:layout_height="612dp"
+        android:id="@+id/rvPilotos"
+        android:layout_width="wrap_content"
+        android:layout_height="544dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.112" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

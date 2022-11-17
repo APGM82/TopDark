@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/battleshipsnormal"
+    android:foregroundTint="#000000"
     tools:context=".ActivityAltaNave">
 
     <Button
@@ -15,21 +16,156 @@
         android:text="OK"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.718"
+        app:layout_constraintHorizontal_bias="0.78"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
+        app:layout_constraintVertical_bias="0.941" />
 
     <Button
         android:id="@+id/btnVolverAltaNave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="#E91E63"
-        android:text="Volver"
+        android:text="@string/btnBack"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.231"
+        app:layout_constraintHorizontal_bias="0.271"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
+        app:layout_constraintVertical_bias="0.941" />
+
+    <LinearLayout
+        android:id="@+id/chkLayout"
+        android:layout_width="248dp"
+        android:layout_height="60dp"
+        android:background="#000000"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.546"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.507">
+
+        <CheckBox
+            android:id="@+id/chkPasajeros"
+            android:layout_width="wrap_content"
+            android:layout_height="58dp"
+            android:text="@string/pasajeros"
+            android:textColor="#C5C5C5"
+            android:textSize="20sp" />
+
+        <CheckBox
+            android:id="@+id/chkCarga"
+            android:layout_width="124dp"
+            android:layout_height="58dp"
+            android:text="@string/carga"
+            android:textColor="#C5C5C5"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/labNaves"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:text="@string/seleccionNave"
+        android:textAlignment="center"
+        android:textColor="#ACABAB"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.046" />
+
+    <EditText
+        android:id="@+id/txtMatricula"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/pistaMatricula"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        android:textColor="#C6C6C6"
+        android:textColorHint="#C6C6C6"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.149" />
+
+    <RadioGroup
+        android:id="@+id/rbGroup"
+        android:layout_width="168dp"
+        android:layout_height="146dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.28">
+
+        <RadioButton
+            android:id="@+id/rbCaza"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Tie Fighter"
+            android:textAlignment="center"
+            android:textColor="#ACABAB"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rbBombardero"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Tie Bomber"
+            android:textAlignment="center"
+            android:textColor="#ACABAB"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/rbCarga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="false"
+            android:text="Shuttle"
+            android:textAlignment="center"
+            android:textColor="#ACABAB"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </RadioGroup>
+
+    <ImageView
+        android:id="@+id/imgNave"
+        android:layout_width="192dp"
+        android:layout_height="144dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.716"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <Button
+        android:id="@+id/btnCambiarImagenNave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/imgPersonalizada"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.846"
+        app:strokeColor="#FFFFFF"
+        app:strokeWidth="5px" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
