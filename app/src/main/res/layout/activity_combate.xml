@@ -40,6 +40,7 @@
             android:text="@string/infoCombate"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
+            android:textIsSelectable="false"
             android:textSize="20sp" />
     </FrameLayout>
 

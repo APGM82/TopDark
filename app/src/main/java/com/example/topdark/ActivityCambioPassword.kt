@@ -34,10 +34,16 @@ class ActivityCambioPassword : AppCompatActivity() {
         binding.txvNombrePasswd.text=nom
 
         binding.btnCambiarPassword.setOnClickListener{
-            p!!.password=binding.txtNewPassword.text.toString()
-            modPasswd(this,nom,p!!)
-            Toast.makeText(this, "Contraseña cambiada correctamente", Toast.LENGTH_SHORT).show()
-            binding.btnContinuar.isVisible=true
+            if(binding.txtNewPassword.text.isNullOrEmpty()){
+                Toast.makeText(this, "Rellene la contraseña", Toast.LENGTH_SHORT).show()
+            }else{
+                p!!.password=binding.txtNewPassword.text.toString()
+                modPasswd(this,nom,p!!)
+                Toast.makeText(this, "Contraseña cambiada correctamente", Toast.LENGTH_SHORT).show()
+                binding.btnContinuar.isVisible=true
+                binding.btnCambiarPassword.isVisible=false
+            }
+
         }
         binding.btnContinuar.setOnClickListener {
             val intent = Intent(this, ActivityHomePiloto::class.java)

@@ -24,8 +24,8 @@ class ActivityVader : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.btnVolver.setOnClickListener{
-            val intent = Intent()
-            setResult(Activity.RESULT_CANCELED, intent)
+            val intent = Intent(this, MainActivity::class.java)
+            resultLauncher.launch(intent)
             finish()
         }
         binding.btnAltaPiloto.setOnClickListener{

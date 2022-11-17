@@ -107,6 +107,10 @@ class ActivityAsignar : AppCompatActivity() {
                 Toast.makeText(this,"Mision de combate "+binding.txvMisionArraigada.text.toString()+" asignada a "+binding.txvPilotoArraigado.text.toString()+" con la nave "+binding.txvNaveArraigada.text.toString(),Toast.LENGTH_SHORT).show()
                 }
             }
+            binding.btnAsignarTodo.isVisible=false
+            binding.txvMisionArraigada.text=""
+            binding.txvNaveArraigada.text=""
+            binding.txvPilotoArraigado.text=""
         }
     }
 }

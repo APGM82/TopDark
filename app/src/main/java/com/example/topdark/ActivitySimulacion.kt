@@ -11,9 +11,12 @@ import Modelo.MisionBombardeo
 import Modelo.MisionCombate
 import Modelo.MisionVuelo
 import Modelo.Pilotos
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.activity.result.contract.ActivityResultContracts
 
 import com.example.topdark.databinding.ActivitySimulacionBinding
 import kotlin.random.Random
@@ -27,27 +30,45 @@ class ActivitySimulacion : AppCompatActivity() {
         binding = ActivitySimulacionBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                // There are no request codes
+                val data: Intent? = result.data
+                // Get data from Intent
+            } else { }
+        }
+
+
         var idMision=intent.getStringExtra("idMision")
 
         var v= Conexion.obtenerMisionesVuelo(this)
         var b= Conexion.obtenerMisionesBombardeo(this)
         var c= Conexion.obtenerMisionesCombate(this)
         var n= Conexion.obtenerNaves(this)
-
+        var nombrePiloto=""
         for (mision in v) {
             if (mision.id.toString() == idMision) {
+                nombrePiloto=mision.asignacionP
                 vuelo(mision)
             }
         }
         for (mision in b) {
             if (mision.id.toString() == idMision) {
+                nombrePiloto=mision.asignacionP
                 bombardeo(mision)
             }
         }
         for (mision in c) {
             if (mision.id.toString() == idMision) {
+                nombrePiloto=mision.asignacionP
                 combate(mision)
             }
+        }
+        binding.btnVolverSimulacion.setOnClickListener {
+            val intent = Intent(this, ActivityHomePiloto::class.java)
+            intent.putExtra("nombrePiloto",nombrePiloto)
+            resultLauncher.launch(intent)
+            finish()
         }
     }
     fun combate(mision:MisionCombate){
@@ -103,7 +124,13 @@ class ActivitySimulacion : AppCompatActivity() {
         modExpPiloto(this, p.nombre, p)
         if(mision.cazas < (objetivos2*2)){
             mision.completada=1
+            binding.txvMisionEstado.text="¡Misión Completada!"
+            binding.imgPassFail.setImageResource(R.drawable.pass)
+
             modCompletadaCombate(this,mision.id,mision)
+        }else{
+            binding.txvMisionEstado.text="¡Misión Fallada!"
+            binding.imgPassFail.setImageResource(R.drawable.fail)
         }
     }
     fun bombardeo(mision:MisionBombardeo){
@@ -159,7 +186,12 @@ class ActivitySimulacion : AppCompatActivity() {
         modExpPiloto(this, p.nombre, p)
         if(mision.objetivos < objetivos2*2){
             mision.completada=1
+            binding.txvMisionEstado.text="¡Misión Completada!"
+            binding.imgPassFail.setImageResource(R.drawable.pass)
             modCompletadaBombardeo(this,mision.id,mision)
+        }else{
+            binding.txvMisionEstado.text="¡Misión Fallada!"
+            binding.imgPassFail.setImageResource(R.drawable.fail)
         }
     }
     fun vuelo(mision:MisionVuelo){
@@ -208,7 +240,7 @@ class ActivitySimulacion : AppCompatActivity() {
             if (tiempo % 20000==0){
                 var rd2=Random.nextInt(0,10)
                 if (rd2<3){
-                    binding.txvLog.text=binding.txvLog.text.toString()+"\n El piloto se enfrenta a un ataque"
+                    binding.txvLog.text=binding.txvLog.text.toString()+"\n El Piloto se enfrenta a un ataque"
                     if (exp<50){
                         var rd=Random.nextInt(0,10)
                         if (rd<4){
@@ -267,8 +299,13 @@ class ActivitySimulacion : AppCompatActivity() {
         Log.e("obj",objetivos2.toString())
         if(objetivos2==1){
             mision.completada=1
+            binding.txvMisionEstado.text="¡Misión Completada!"
+            binding.imgPassFail.setImageResource(R.drawable.pass)
             modCompletadaVuelo(this,mision.id,mision,objetivos2)
             Log.e("obj","Modificado")
+        }else{
+            binding.txvMisionEstado.text="¡Misión Fallada!"
+            binding.imgPassFail.setImageResource(R.drawable.fail)
         }
     }
 }

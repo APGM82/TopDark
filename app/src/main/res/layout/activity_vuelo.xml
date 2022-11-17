@@ -56,6 +56,7 @@
             android:text="Para las misiones de vuelo solo hay que seleccionar los minutos de vuelo que se desean realizar, sin embargo cuantos mas minutos de vuelo mas probabilidades de fallar la mision. Minimo de 30 minutos"
             android:textAlignment="center"
             android:textColor="#FFFFFF"
+            android:textIsSelectable="false"
             android:textSize="20sp"
             android:textStyle="bold" />
     </FrameLayout>
@@ -88,6 +89,7 @@
             android:ems="10"
             android:hint="Número de minutos..."
             android:inputType="textPersonName"
+            android:minHeight="48dp"
             android:textColor="#FFFFFF"
             android:textColorHint="#FFFFFF"
             android:textStyle="bold" />

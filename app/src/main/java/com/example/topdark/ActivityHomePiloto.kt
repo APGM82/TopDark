@@ -53,8 +53,8 @@ class ActivityHomePiloto : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.CAMERA), cameraRequest)
 
         binding.btnVolverHomePiloto.setOnClickListener{
-            val intent = Intent()
-            setResult(Activity.RESULT_CANCELED, intent)
+            val intent = Intent(this, MainActivity::class.java)
+            resultLauncher.launch(intent)
             finish()
         }
         binding.btnCambiarFoto.setOnClickListener {

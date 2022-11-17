@@ -24,7 +24,9 @@
                 android:id="@+id/imgImagen"
                 android:layout_width="117dp"
                 android:layout_height="match_parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:ignore="ImageContrastCheck"
+                tools:srcCompat="@tools:sample/avatars"
+                android:contentDescription="TODO" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -37,16 +39,19 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/labId"
-                        android:layout_width="28dp"
-                        android:layout_height="24dp"
-                        android:text="ID" />
+                        android:id="@+id/textView4"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/txtNombre" />
 
                     <TextView
                         android:id="@+id/txtNombrePiloto"
-                        android:layout_width="230dp"
+                        android:layout_width="200dp"
                         android:layout_height="30dp"
-                        android:layout_marginLeft="10dp" />
+                        android:layout_marginStart="10dp"
+                        android:textSize="24sp" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -55,15 +60,30 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/labId"
+                        android:layout_width="28dp"
+                        android:layout_height="24dp"
+                        android:text="ID:" />
+
+                    <TextView
                         android:id="@+id/txtIdMision"
                         android:layout_width="45dp"
                         android:layout_height="33dp"
                         android:textSize="24sp" />
 
                     <TextView
+                        android:id="@+id/labNombreNave"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Nombre de la nave:"
+                        android:textSize="12sp" />
+
+                    <TextView
                         android:id="@+id/txtNombreNave"
-                        android:layout_width="230dp"
-                        android:layout_height="30dp" />
+                        android:layout_width="108dp"
+                        android:layout_height="wrap_content" />
+
                 </LinearLayout>
 
             </LinearLayout>
