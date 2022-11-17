@@ -99,7 +99,7 @@ object Conexion {
 
         val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
         val bd = admin.writableDatabase
-        val fila = bd.rawQuery("select nombre,edad,experiencia,password,foto from pilotos", null)
+        val fila = bd.rawQuery("select nombre,edad,experiencia,password,foto from pilotos order by experiencia desc" , null)
         while (fila.moveToNext()) {
             var p: Pilotos = Pilotos(fila.getString(0),fila.getInt(1),fila.getInt(2),fila.getString(3),fila.getString(4))
             pilotos.add(p)
@@ -133,7 +133,7 @@ object Conexion {
             null
         )
         if (fila.moveToFirst()) {
-            n = Naves(matricula, fila.getString(0),fila.getString(1).toBoolean(),fila.getString(2).toBoolean(),fila.getString(3))
+            n = Naves(matricula, fila.getString(1),fila.getInt(2),fila.getInt(3),fila.getString(4))
         }
         bd.close()
         return n
@@ -147,7 +147,7 @@ object Conexion {
         val bd = admin.writableDatabase
         val fila = bd.rawQuery("select matricula,tipo,carga,pasajeros,foto from naves", null)
         while (fila.moveToNext()) {
-            var n: Naves = Naves(fila.getString(0),fila.getString(1),fila.getString(2).toBoolean(),fila.getString(3).toBoolean(),fila.getString(4))
+            var n: Naves = Naves(fila.getString(0),fila.getString(1),fila.getInt(2),fila.getInt(3),fila.getString(4))
             naves.add(n)
         }
         bd.close()
@@ -162,7 +162,7 @@ object Conexion {
         val bd = admin.writableDatabase
         val fila = bd.rawQuery("select matricula,tipo,carga,pasajeros,foto from naves where tipo='${tipo}' ", null)
         while (fila.moveToNext()) {
-            var n: Naves = Naves(fila.getString(0),fila.getString(1),fila.getString(2).toBoolean(),fila.getString(3).toBoolean(),fila.getString(4))
+            var n: Naves = Naves(fila.getString(0),fila.getString(1),fila.getInt(2),fila.getInt(3),fila.getString(4))
             naves.add(n)
         }
         bd.close()
@@ -174,7 +174,7 @@ object Conexion {
         val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
         val bd = admin.writableDatabase
         val registro = ContentValues()
-        //id:Int, var duracion:Int,  asignacionP:String, asignacionN:String, completada:Boolean
+
         registro.put("id",m.id)
         registro.put("duracion", m.duracion)
         registro.put("asignacionp",m.asignacionP)
@@ -189,7 +189,7 @@ object Conexion {
         val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
         val bd = admin.writableDatabase
         val registro = ContentValues()
-        //id:Int, var duracion:Int,  asignacionP:String, asignacionN:String, completada:Boolean
+
         registro.put("id",m.id)
         registro.put("cazas", m.cazas)
         registro.put("asignacionp",m.asignacionP)
@@ -222,7 +222,7 @@ object Conexion {
         val bd = admin.writableDatabase
         val fila = bd.rawQuery("select id,duracion,asignacionp, asignacionn,completada from misionesvuelo", null)
         while (fila.moveToNext()) {
-            var m: MisionVuelo = MisionVuelo(fila.getInt(0),fila.getInt(1),fila.getString(2),fila.getString(3),fila.getString(4).toBoolean())
+            var m: MisionVuelo = MisionVuelo(fila.getInt(0),fila.getInt(1),fila.getString(2),fila.getString(3),fila.getInt(4))
             misionesVuelo.add(m)
         }
         bd.close()
@@ -236,7 +236,7 @@ object Conexion {
         val bd = admin.writableDatabase
         val fila = bd.rawQuery("select id,cazas,asignacionp, asignacionn,completada from misionescombate", null)
         while (fila.moveToNext()) {
-            var m: MisionCombate = MisionCombate(fila.getInt(0),fila.getInt(1),fila.getString(2),fila.getString(3),fila.getString(4).toBoolean())
+            var m: MisionCombate = MisionCombate(fila.getInt(0),fila.getInt(1),fila.getString(2),fila.getString(3),fila.getInt(4))
             misionesCombate.add(m)
         }
         bd.close()
@@ -250,7 +250,7 @@ object Conexion {
         val bd = admin.writableDatabase
         val fila = bd.rawQuery("select id, objetivos, asignacionp, asignacionn, completada from misionesbombardeo", null)
         while (fila.moveToNext()) {
-            var m: MisionBombardeo = MisionBombardeo(fila.getInt(0),fila.getInt(1),fila.getString(2),fila.getString(3),fila.getString(4).toBoolean())
+            var m: MisionBombardeo = MisionBombardeo(fila.getInt(0),fila.getInt(1),fila.getString(2),fila.getString(3),fila.getInt(4))
             misionesBombardeo.add(m)
         }
         bd.close()
@@ -315,6 +315,36 @@ object Conexion {
         val registro = ContentValues()
         registro.put("asignacionn",m.asignacionN)
         val cant = bd.update("misionescombate", registro, "id='${id}'", null)
+        bd.close()
+        return cant
+    }
+    //AQUI CAMBIO EL VALOR "COMPLETADA" DE LA MISION DE COMBATE
+    fun modCompletadaCombate(contexto:AppCompatActivity, id:Int, m: MisionCombate):Int {
+        val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
+        val bd = admin.writableDatabase
+        val registro = ContentValues()
+        registro.put("completada",m.completada)
+        val cant = bd.update("misionescombate", registro, "id='${id}'", null)
+        bd.close()
+        return cant
+    }
+    //AQUI CAMBIO EL VALOR "COMPLETADA" DE LA MISION DE BOMBARDEO
+    fun modCompletadaBombardeo(contexto:AppCompatActivity, id:Int, m: MisionBombardeo):Int {
+        val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
+        val bd = admin.writableDatabase
+        val registro = ContentValues()
+        registro.put("completada",m.completada)
+        val cant = bd.update("misionesbombardeo", registro, "id='${id}'", null)
+        bd.close()
+        return cant
+    }
+    //AQUI CAMBIO EL VALOR "COMPLETADA" DE LA MISION DE VUELO
+    fun modCompletadaVuelo(contexto:AppCompatActivity, id:Int, m: MisionVuelo, t:Int):Int {
+        val admin = AdminSQLIteConexion(contexto, nombreBD, null, 1)
+        val bd = admin.writableDatabase
+        val registro = ContentValues()
+        registro.put("completada",t)
+        val cant = bd.update("misionesvuelo", registro, "id='${id}'", null)
         bd.close()
         return cant
     }

@@ -1,74 +1,67 @@
-import Modelo.Mision
+package Adaptadores
 
+import Modelo.Pilotos
 import android.content.Context
-import android.content.DialogInterface
-import android.content.Intent
-
+import android.graphics.BitmapFactory
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-
-import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.RecyclerView
-import com.example.topdark.ActivityDetalles
-import com.example.topdark.ActivitySimulacion
 import com.example.topdark.R
 
-
-
-class MiAdaptadorRecycler(var misiones : ArrayList<Mision>,var  context: Context) : RecyclerView.Adapter<MiAdaptadorRecycler.ViewHolder>() {
-
+class MiAdaptadorRecycler2 (var pilotos : ArrayList<Pilotos>, var  context: Context) : RecyclerView.Adapter<MiAdaptadorRecycler2.ViewHolder>() {
     companion object {
 
         var seleccionado:Int = -1
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = misiones.get(position)
+        val item = pilotos.get(position)
         holder.bind(item, context, position, this)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        return ViewHolder(layoutInflater.inflate(R.layout.item_card,parent,false))
+        return ViewHolder(layoutInflater.inflate(R.layout.item_card2,parent,false))
     }
 
     override fun getItemCount(): Int {
 
-        return misiones.size
+        return pilotos.size
     }
-
-
-    //--------------------------------- Clase interna ViewHolder -----------------------------------
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        val idMision = view.findViewById(R.id.txtIdMision) as TextView
-        val nombrePiloto = view.findViewById(R.id.txtNombrePiloto) as TextView
-        val nombreNave = view.findViewById(R.id.txtNombreNave) as TextView
-        val avatar = view.findViewById(R.id.imgImagen) as ImageView
+        val nombrePiloto = view.findViewById(R.id.txtNombrePiloto2) as TextView
+        val edad = view.findViewById(R.id.txtEdad) as TextView
+        val txtRango=view.findViewById(R.id.txtRango) as TextView
+        val txtExperiencia = view.findViewById(R.id.txtExperiencia) as TextView
+        val avatar2 = view.findViewById(R.id.imgImagen2) as ImageView
 
 
-        fun bind(mis: Mision, context: Context, pos: Int, miAdaptadorRecycler: MiAdaptadorRecycler){
-            var nombre=mis.asignacionP
-
-            idMision.text=mis.id.toString()
-            nombrePiloto.text = mis.asignacionP
-            nombreNave.text = mis.asignacionN
-            if (mis.completada==1){
-                val uri = "@drawable/completada"
-                val imageResource: Int = context.getResources().getIdentifier(uri, null, context.getPackageName())
-                var res: Drawable = context.resources.getDrawable(imageResource)
-                avatar.setImageDrawable(res)
-            }else{
-                val uri = "@drawable/incompleta"
-                val imageResource: Int = context.getResources().getIdentifier(uri, null, context.getPackageName())
-                var res: Drawable = context.resources.getDrawable(imageResource)
-                avatar.setImageDrawable(res)
+        fun bind(pil: Pilotos, context: Context, pos: Int, miAdaptadorRecycler: MiAdaptadorRecycler2){
+            //var nombre=pil.asignacionP
+            edad.text=pil.edad.toString()
+            nombrePiloto.text = pil.nombre
+            txtExperiencia.text=pil.experiencia.toString()
+            if (pil.experiencia<50){
+                txtRango.text="Novato"
             }
+            if (pil.experiencia>99){
+                txtRango.text="Intermedio"
+            }
+            if (pil.experiencia>49&&pil.experiencia<100){
+                txtRango.text="Experto"
+            }
+
+            if(pil.foto!=null){
+                var bitmap1 = BitmapFactory.decodeFile("/storage/emulated/0/Android/data/com.example.topdark/files/"+pil.foto)
+                avatar2.setImageBitmap(bitmap1)
+            }
+
             //Para marcar o desmarcar al seleccionado usamos el siguiente código.
             if (pos == seleccionado) {
                 with(nombrePiloto) {
@@ -81,7 +74,8 @@ class MiAdaptadorRecycler(var misiones : ArrayList<Mision>,var  context: Context
                 }
             }
             //Se levanta una escucha para cada item. Si pulsamos el seleccionado pondremos la selección a -1, en otro caso será el nuevo sleccionado.
-            itemView.setOnClickListener(View.OnClickListener
+            /*itemView.setOnClickListener(
+                View.OnClickListener
             {
                 if (pos == seleccionado) {
                     seleccionado = -1
@@ -96,8 +90,9 @@ class MiAdaptadorRecycler(var misiones : ArrayList<Mision>,var  context: Context
 
 
                 miAdaptadorRecycler.notifyDataSetChanged()
-            })
-            itemView.setOnLongClickListener(View.OnLongClickListener
+            })*/
+            /*itemView.setOnLongClickListener(
+                View.OnLongClickListener
             {
                 if (pos == seleccionado){
                     seleccionado = -1
@@ -125,8 +120,9 @@ class MiAdaptadorRecycler(var misiones : ArrayList<Mision>,var  context: Context
                 //Con la siguiente instrucción forzamos a recargar el viewHolder porque han cambiado los datos. Así pintará al seleccionado.
                 miAdaptadorRecycler.notifyDataSetChanged()
                 return@OnLongClickListener true
-            })
+            })*/
 
         }
     }
+
 }

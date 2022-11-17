@@ -25,21 +25,21 @@ class ActivityListaMisionesCompletas : AppCompatActivity() {
 
         for (mision in v){
             if (mision.asignacionP.equals(nombreP)){
-                if (mision.completada){
+                if (mision.completada==1){
                     m.add(Mision(mision.id,mision.asignacionP,mision.asignacionN,mision.completada))
                 }
             }
         }
         for (mision in b){
             if (mision.asignacionP.equals(nombreP)){
-                if (mision.completada){
+                if (mision.completada==1){
                     m.add(Mision(mision.id,mision.asignacionP,mision.asignacionN,mision.completada))
                 }
             }
         }
         for (mision in c){
             if (mision.asignacionP.equals(nombreP)){
-                if (mision.completada){
+                if (mision.completada==1){
                     m.add(Mision(mision.id,mision.asignacionP,mision.asignacionN,mision.completada))
                 }
             }

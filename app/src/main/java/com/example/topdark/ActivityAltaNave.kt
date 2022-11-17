@@ -60,18 +60,18 @@ class ActivityAltaNave : AppCompatActivity() {
             finish()
         }
         binding.btnOkAltaNave.setOnClickListener{
-            var pasa:Boolean=false
-            var carg:Boolean=false
+            var pasa=0
+            var carg=0
 
             if(binding.chkPasajeros.isChecked==false){
-                pasa=false
-            }else{pasa=true}
+                pasa=0
+            }else{pasa=1}
 
             if(binding.chkCarga.isChecked==false){
-                carg=false
-            }else{carg=true}
+                carg=0
+            }else{carg=1}
             if (!binding.txtMatricula.text.trim().toString().isNullOrEmpty() && (binding.rbCaza.isChecked || binding.rbBombardero.isChecked || binding.rbCarga.isChecked)){
-                var n:Naves=Naves(binding.txtMatricula.text.trim().toString(),tipo,carg,pasa,tipo)
+                var n:Naves=Naves(binding.txtMatricula.text.trim().toString(),tipo,carg,pasa,"")
                 addNave(this,n)
                 Toast.makeText(this,getResources().getString(R.string.creada),Toast.LENGTH_SHORT).show()
             }else{

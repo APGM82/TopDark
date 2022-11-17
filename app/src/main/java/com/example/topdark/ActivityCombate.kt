@@ -39,7 +39,7 @@ class ActivityCombate : AppCompatActivity() {
             Toast.makeText(this,sumamisiones.toString(),Toast.LENGTH_SHORT).show()
             if (!binding.txtCazas.text.trim().toString().isNullOrEmpty()){
                 if (binding.txtCazas.text.trim().toString().isDigitsOnly()){
-                    var mision: MisionCombate = MisionCombate(sumamisiones,binding.txtCazas.text.toString().toInt(),"","",false)
+                    var mision: MisionCombate = MisionCombate(sumamisiones,binding.txtCazas.text.toString().toInt(),"","",0)
                     Conexion.addMisionCombate(this, mision)
                 }
             }

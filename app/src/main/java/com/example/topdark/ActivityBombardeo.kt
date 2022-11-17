@@ -38,7 +38,7 @@ class ActivityBombardeo : AppCompatActivity() {
             Toast.makeText(this,sumamisiones.toString(),Toast.LENGTH_SHORT).show()
             if (!binding.txtObjetivos.text.trim().toString().isNullOrEmpty()){
                 if (binding.txtObjetivos.text.trim().toString().isDigitsOnly()){
-                    var mision:MisionBombardeo=MisionBombardeo(sumamisiones,binding.txtObjetivos.text.toString().toInt(),"","",false)
+                    var mision:MisionBombardeo=MisionBombardeo(sumamisiones,binding.txtObjetivos.text.toString().toInt(),"","",0)
                     Conexion.addMisionBombardeo(this, mision)
                     //Toast.makeText(this,"Se ha creado la misión", Toast.LENGTH_SHORT).show()
                 }

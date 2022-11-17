@@ -39,7 +39,7 @@ class ActivityVuelo : AppCompatActivity() {
             Toast.makeText(this,sumamisiones.toString(),Toast.LENGTH_SHORT).show()
             if (!binding.txtDuracionVuelo.text.trim().toString().isNullOrEmpty()){
                 if (binding.txtDuracionVuelo.text.trim().toString().isDigitsOnly()){
-                    var mision:MisionVuelo=MisionVuelo(sumamisiones,binding.txtDuracionVuelo.text.toString().toInt(),"","",false)
+                    var mision:MisionVuelo=MisionVuelo(sumamisiones,binding.txtDuracionVuelo.text.toString().toInt(),"","",0)
                     addMisionVuelo(this,mision)
                     //Toast.makeText(this,"Se ha creado la misión",Toast.LENGTH_SHORT).show()
                 }

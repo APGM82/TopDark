@@ -5,6 +5,7 @@ import MiAdaptadorRecycler
 import Modelo.Mision
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.topdark.databinding.ActivityListaMisionesPendientesBinding
 
@@ -24,21 +25,22 @@ class ActivityListaMisionesPendientes : AppCompatActivity() {
 
         for (mision in v){
             if (mision.asignacionP.equals(nombreP)){
-                if (!mision.completada){
+                Log.e("what!!!!!",mision.completada.toString()+"/ID: "+mision.id)
+                if (mision.completada==0){
                     m.add(Mision(mision.id,mision.asignacionP,mision.asignacionN,mision.completada))
                 }
             }
         }
         for (mision in b){
             if (mision.asignacionP.equals(nombreP)){
-                if (!mision.completada){
+                if (mision.completada==0){
                     m.add(Mision(mision.id,mision.asignacionP,mision.asignacionN,mision.completada))
                 }
             }
         }
         for (mision in c){
             if (mision.asignacionP.equals(nombreP)){
-                if (!mision.completada){
+                if (mision.completada==0){
                     m.add(Mision(mision.id,mision.asignacionP,mision.asignacionN,mision.completada))
                 }
             }

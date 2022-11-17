@@ -13,6 +13,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
@@ -87,7 +88,7 @@ class ActivityHomePiloto : AppCompatActivity() {
                 val photo: Bitmap = data?.extras?.get("data") as Bitmap
                 binding.imageView.setImageBitmap(photo)
                 var nombre:String=intent.getStringExtra("nombrePiloto")!!
-                var fotoFichero = File(getExternalFilesDir(null), "$nombre.jpg")
+                var fotoFichero = File(getExternalFilesDir(null), "/$nombre.jpg")
                 var uri = Uri.fromFile(fotoFichero)
                 var fileOutStream = FileOutputStream(fotoFichero)
                 photo.compress(Bitmap.CompressFormat.PNG, 100, fileOutStream);

@@ -37,9 +37,8 @@ class ActivityAsignar : AppCompatActivity() {
         var n= obtenerNaves(this)
         var p= obtenerPilotos(this)
 
-
-
         binding.btnAsignarTodo.isVisible=false
+
         for (mision in v){
             misionId.add(mision.id.toString())
         }
@@ -55,6 +54,7 @@ class ActivityAsignar : AppCompatActivity() {
         for (piloto in p){
             pilotosNombre.add(piloto.nombre)
         }
+
         val adaptadorVuelo= ArrayAdapter(this,R.layout.item_lista,R.id.txtItem,misionId)
         binding.spnMision.adapter=adaptadorVuelo
 
