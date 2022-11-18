@@ -16,6 +16,7 @@ class ActivityAltaPiloto : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAltaPilotoBinding.inflate(layoutInflater)
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         setContentView(binding.root)
 
         binding.btnVolverAltaPiloto.setOnClickListener{

@@ -93,8 +93,6 @@ class MiAdaptadorRecycler(var misiones : ArrayList<Mision>,var  context: Context
                     context.startActivity(intentV1)
                 }
                 //Con la siguiente instrucción forzamos a recargar el viewHolder porque han cambiado los datos. Así pintará al seleccionado.
-
-
                 miAdaptadorRecycler.notifyDataSetChanged()
             })
             itemView.setOnLongClickListener(View.OnLongClickListener

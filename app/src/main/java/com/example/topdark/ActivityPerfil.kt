@@ -15,6 +15,7 @@ class ActivityPerfil : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityPerfilBinding.inflate(layoutInflater)
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         setContentView(binding.root)
 
         var nom=intent.getStringExtra("nombrePiloto")

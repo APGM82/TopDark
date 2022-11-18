@@ -18,6 +18,7 @@ class ActivityBombardeo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityBombardeoBinding.inflate(layoutInflater)
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         setContentView(binding.root)
 
 

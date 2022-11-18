@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         setContentView(binding.root)
 
         binding.btnConectar.setOnClickListener {

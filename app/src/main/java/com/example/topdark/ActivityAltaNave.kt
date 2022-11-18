@@ -15,9 +15,11 @@ import com.example.topdark.databinding.ActivityAltaNaveBinding
 
 class ActivityAltaNave : AppCompatActivity() {
     lateinit var binding: ActivityAltaNaveBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAltaNaveBinding.inflate(layoutInflater)
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         setContentView(binding.root)
 
         var tipo:String=""

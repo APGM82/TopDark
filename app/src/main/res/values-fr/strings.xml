@@ -45,4 +45,9 @@
     <string name="txtAltaNave">NOUVEAU NAVIRE</string>
     <string name="tatAsignar">ASSIGNER</string>
     <string name="txtRanking">CLASSEMENT</string>
+    <string name="txtBienvenido">Bienvenu</string>
+    <string name="txtNewPassword">Insérez votre nouveau mot de passe :</string>
+    <string name="txtPistaNuevaContraseña">Nouveau mot de passe...</string>
+    <string name="txtContinuar">CONTINUEZ</string>
+    <string name="txtCambiarContraseña">CHANGER LE MOT DE PASSE</string>
 </resources>

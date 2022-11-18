@@ -21,6 +21,7 @@ class ActivityCrearMision : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCrearMisionBinding.inflate(layoutInflater)
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         setContentView(binding.root)
 
         binding.btnVolverCrearMision.setOnClickListener{

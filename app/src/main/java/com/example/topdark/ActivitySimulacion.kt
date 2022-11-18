@@ -28,6 +28,7 @@ class ActivitySimulacion : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySimulacionBinding.inflate(layoutInflater)
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         setContentView(binding.root)
 
         var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->

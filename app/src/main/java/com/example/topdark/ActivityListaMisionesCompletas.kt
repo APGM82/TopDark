@@ -13,6 +13,7 @@ class ActivityListaMisionesCompletas : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityListaMisionesCompletasBinding.inflate(layoutInflater)
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         setContentView(binding.root)
 
         var nombreP=intent.getStringExtra("nombrePiloto")

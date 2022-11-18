@@ -14,6 +14,7 @@ class ActivityListaMisionesPendientes : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding= ActivityListaMisionesPendientesBinding.inflate(layoutInflater)
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         setContentView(binding.root)
         var nombreP=intent.getStringExtra("nombrePiloto")
         //Aqui va un recyclerview

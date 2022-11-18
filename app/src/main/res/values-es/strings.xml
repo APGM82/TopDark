@@ -45,4 +45,9 @@
     <string name="txtCrearMision">CREAR MISIÓN</string>
     <string name="tatAsignar">ASIGNAR</string>
     <string name="txtRanking">CLASIFICACIÓN</string>
+    <string name="txtBienvenido">Bienvenido</string>
+    <string name="txtNewPassword">Introduzca su nueva contraseña:</string>
+    <string name="txtPistaNuevaContraseña">Nueva Contraseña...</string>
+    <string name="txtCambiarContraseña">CAMBIAR CONTRASEÑA</string>
+    <string name="txtContinuar">CONTINUAR</string>
 </resources>

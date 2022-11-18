@@ -26,6 +26,7 @@ class ActivityCambioPassword : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCambioPasswordBinding.inflate(layoutInflater)
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         setContentView(binding.root)
 
         var nom:String=intent.getStringExtra("nombrePiloto")!!

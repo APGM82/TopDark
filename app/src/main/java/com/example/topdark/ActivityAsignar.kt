@@ -26,6 +26,7 @@ class ActivityAsignar : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAsignarBinding.inflate(layoutInflater)
+        overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         setContentView(binding.root)
         var misionId=arrayListOf<String>()
         var pilotosNombre= arrayListOf<String>()
