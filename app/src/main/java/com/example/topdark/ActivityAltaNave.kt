@@ -23,7 +23,7 @@ class ActivityAltaNave : AppCompatActivity() {
         setContentView(binding.root)
 
         var tipo:String=""
-
+        var foto: String=""
 
         binding.rbCaza.setOnClickListener {
             binding.chkPasajeros.isChecked=false
@@ -34,6 +34,7 @@ class ActivityAltaNave : AppCompatActivity() {
             binding.chkLayout.isVisible=false
             binding.imgNave.setImageResource(R.drawable.lambdashuttle)
             tipo="caza"
+            foto="tiefighter"
         }
         binding.rbBombardero.setOnClickListener {
 
@@ -42,6 +43,7 @@ class ActivityAltaNave : AppCompatActivity() {
             binding.chkCarga.isEnabled=true
             binding.imgNave.setImageResource(R.drawable.tiebomber)
             tipo="bombardero"
+            foto="tiebomber"
         }
         binding.rbCarga.setOnClickListener {
 
@@ -50,6 +52,7 @@ class ActivityAltaNave : AppCompatActivity() {
             binding.chkCarga.isEnabled=true
             binding.imgNave.setImageResource(R.drawable.tiefighter)
             tipo="carguero"
+            foto="lambdashuttle"
         }
 
 
@@ -73,7 +76,7 @@ class ActivityAltaNave : AppCompatActivity() {
                 carg=0
             }else{carg=1}
             if (!binding.txtMatricula.text.trim().toString().isNullOrEmpty() && (binding.rbCaza.isChecked || binding.rbBombardero.isChecked || binding.rbCarga.isChecked)){
-                var n:Naves=Naves(binding.txtMatricula.text.trim().toString(),tipo,carg,pasa,"")
+                var n:Naves=Naves(binding.txtMatricula.text.trim().toString(),tipo,carg,pasa,"$foto")
                 addNave(this,n)
                 Toast.makeText(this,getResources().getString(R.string.creada),Toast.LENGTH_SHORT).show()
             }else{

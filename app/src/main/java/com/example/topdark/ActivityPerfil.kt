@@ -5,6 +5,7 @@ import Modelo.Pilotos
 import android.app.Activity
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.topdark.databinding.ActivityAltaPilotoBinding
@@ -17,6 +18,9 @@ class ActivityPerfil : AppCompatActivity() {
         binding = ActivityPerfilBinding.inflate(layoutInflater)
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         setContentView(binding.root)
+
+        var mediaPlayer:MediaPlayer= MediaPlayer.create(this,R.raw.r2d2)
+        mediaPlayer.start();
 
         var nom=intent.getStringExtra("nombrePiloto")
 

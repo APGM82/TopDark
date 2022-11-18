@@ -13,6 +13,7 @@ import Modelo.MisionVuelo
 import Modelo.Pilotos
 import android.app.Activity
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -30,6 +31,9 @@ class ActivitySimulacion : AppCompatActivity() {
         binding = ActivitySimulacionBinding.inflate(layoutInflater)
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         setContentView(binding.root)
+
+        var mediaPlayer:MediaPlayer= MediaPlayer.create(this,R.raw.startmission)
+        mediaPlayer.start();
 
         var resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
             if (result.resultCode == Activity.RESULT_OK) {

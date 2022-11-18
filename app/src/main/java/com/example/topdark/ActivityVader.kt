@@ -2,6 +2,7 @@ package com.example.topdark
 
 import android.app.Activity
 import android.content.Intent
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.result.contract.ActivityResultContracts
@@ -23,6 +24,9 @@ class ActivityVader : AppCompatActivity() {
         binding = ActivityVaderBinding.inflate(layoutInflater)
         overridePendingTransition(R.anim.fadein, R.anim.fadeout);
         setContentView(binding.root)
+
+        var mediaPlayer: MediaPlayer = MediaPlayer.create(this,R.raw.breathing)
+        mediaPlayer.start();
 
         binding.btnVolver.setOnClickListener{
             val intent = Intent(this, MainActivity::class.java)

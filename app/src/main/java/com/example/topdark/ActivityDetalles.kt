@@ -4,6 +4,7 @@ import Auxiliar.Conexion
 import Auxiliar.Conexion.buscarNaves
 import android.app.Activity
 import android.content.Intent
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.view.isVisible
@@ -38,6 +39,7 @@ class ActivityDetalles : AppCompatActivity() {
         var n= Conexion.obtenerNaves(this)
         var p= Conexion.obtenerPilotos(this)
 
+
         for (mision in v) {
             if (mision.id.toString() == idMision) {
                 tipoMision="Vuelo"
@@ -46,6 +48,7 @@ class ActivityDetalles : AppCompatActivity() {
                 duracion=mision.duracion.toString()
                 binding.txvMinutos.isVisible=true
                 binding.txvMinutos2.isVisible=true
+
             }
         }
         for (mision in b) {
@@ -72,6 +75,8 @@ class ActivityDetalles : AppCompatActivity() {
         binding.txvId2.text=idMision
         binding.txvTipoMision2.text=tipoMision
 
+
+
         if (nave!!.pasajeros==1){
             binding.txvPasajeros2.text="Si"
         }else{binding.txvPasajeros2.text="No"}
@@ -85,6 +90,11 @@ class ActivityDetalles : AppCompatActivity() {
         binding.txvMinutos2.text=duracion
         binding.txvObjetivos2.text=objetivos
         binding.txvCazasDetalles2.text=cazas
+
+        val uri = "@drawable/" + nave.foto
+        val imageResource: Int = this.getResources().getIdentifier(uri, null, this.getPackageName())
+        var res:Drawable = this.resources.getDrawable(imageResource)
+        binding.imgNaveDetalles.setImageDrawable(res)
 
         binding.btnVolverDetalles.setOnClickListener {
             val intent = Intent()
