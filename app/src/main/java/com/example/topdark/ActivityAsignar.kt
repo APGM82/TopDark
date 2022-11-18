@@ -53,7 +53,7 @@ class ActivityAsignar : AppCompatActivity() {
             navesMatricula.add(nave.matricula)
         }
         for (piloto in p){
-            pilotosNombre.add(piloto.nombre)
+            if(piloto.nombre!="Vader"){pilotosNombre.add(piloto.nombre)}
         }
 
         val adaptadorVuelo= ArrayAdapter(this,R.layout.item_lista,R.id.txtItem,misionId)
